@@ -6,22 +6,20 @@ class CDemo {
     private : 
         int n; 
     public: 
-        CDemo(int i=0):n(i) { } 
-        CDemo & operator++();      //用于前置形式
-        CDemo operator++( int );   //用于后置形式
+        CDemo(int i=0):n(i) { }     //构造函数
+        CDemo & operator++(){ //前置 ++ 
+            n ++; 
+            return * this; 
+        }  // ++s即为: s.operator++();      
+        CDemo operator++( int k){//后置 ++
+            CDemo tmp(*this); //记录修改前的对象
+            n ++; 
+            return tmp; //返回修改前的对象
+        } //s++即为: s.operator++(0);
         operator int ( ) { return n; } 
         friend CDemo & operator--(CDemo & ); 
         friend CDemo operator--(CDemo & ,int);    
-}; 
-CDemo & CDemo::operator++() { //前置 ++ 
-    n ++; 
-    return * this; 
-}  // ++s即为: s.operator++(); 
-CDemo CDemo::operator++( int k ) { //后置 ++ 
-    CDemo tmp(*this); //记录修改前的对象
-    n ++; 
-    return tmp; //返回修改前的对象
-} // s++即为: s.operator++(0); 
+};   
 CDemo & operator--(CDemo & d) {//前置-- 
     d.n--; 
     return d; 
