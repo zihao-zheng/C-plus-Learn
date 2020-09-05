@@ -2,9 +2,13 @@
 #include <stdlib.h> 
 #include <math.h> 
 using namespace std; 
+/*
+用基类指针数组存放指向各种派生类对象的指针,然后遍历该数组,就能对各个派生类对象做各种操作,是很常用的做法
+*/
 class CShape { 
     public: 
-        virtual double Area() = 0; //纯虚函数
+        virtual double Area() = 0; //纯虚函数，没有任何函数体
+        //没有函数题 ！= 有函数体但函数体中没有任何语句
         virtual void PrintInfo() = 0; 
 }; 
 class CRectangle:public CShape { 
@@ -90,9 +94,12 @@ int MyCompare(const void * s1, const void * s2) {
     p2 = ( CShape * * ) s2; // 故 p1,p2都是指向指针的指针,类型为 CShape ** 
     a1 = (*p1)->Area();   // * p1 的类型是 Cshape * ,是基类指针,故此句为多态
     a2 = (*p2)->Area(); 
-    if( a1 < a2 )   return -1; 
-    else if ( a2 < a1 )     return 1; 
-    else    return 0; 
+    if( a1 < a2 )   
+        return -1; 
+    else if ( a2 < a1 )     
+        return 1; 
+    else    
+        return 0; 
 }
 
 
