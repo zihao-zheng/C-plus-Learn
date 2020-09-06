@@ -2,6 +2,13 @@
 #include <iostream> 
 #include <sstream> 
 using namespace std;
+
+/*
+可以将字符赋值给string对象
+string s;
+s='n';
+*/
+
 string input("Input test 123 4.7 A"); 
 istringstream inputString(input); 
 string string1, string2; 

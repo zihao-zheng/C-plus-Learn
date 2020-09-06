@@ -168,7 +168,7 @@ class A {
     A( A & ) { count ++ ; } 
     static void PrintCount() { cout << count << endl; } 
 };
-template<> int A<int>::count = 0; 
+template<> int A<int>::count = 0; //static变量要声明
 template<> int A<double>::count = 0; 
 int main() { 
     A<int> ia; 

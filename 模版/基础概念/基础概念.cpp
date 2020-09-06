@@ -79,7 +79,7 @@ T myFunction( T arg1, T arg2) {
 }
 
 //函数模版示例：Map
-template<class T,class Pred> 
+template<class T,class Pred> //将s到e的数值经op变换存到x处
 void Map(T s, T e, T x, Pred op) { 
     for(; s != e; ++s,++x) { 
         *x = op(*s); 
@@ -125,7 +125,7 @@ template <class T> class A {
         void Func( T2 t) { cout << t; } //成员函数模板
 };
 
-//类模板的“<类型参数表>”中可以出现非类型参数: 
+//类模板的“<类型参数表>”中可以出现   非类型参数: 
 template <class T, int size> 
 class CArray{ 
         T  array[size]; 
@@ -146,8 +146,9 @@ int main(){
     double f = 1.2,g = 2.3; 
     Swap(f,g); //编译器自动生成 void Swap(double & ,double & )函数
     cout<<f<<" "<<g<<endl;
-
+    //不通过参数实例化函数模版
     cout << Inc<double>(4)/2<<endl;  //输出 2.5
+    
     //函数模版的重载
     int i=4, j=5; 
     Max( 1.2,3.4); // 输出MyMax 
@@ -158,11 +159,11 @@ int main(){
     myFunction( 5.8, 8.4); //ok: replace T with double 
     //myFunction( 5, 8.4); //error,no matching function for call to 'myFunction(int, double)'
 
-    Map(a,a+5,b,Square); 
+    Map(a,a+5,b,Square); //求平方
     for(int i = 0;i < 5; ++i) 
         cout << b[i] << ","; 
         cout << endl; 
-    Map(a,a+5,b,Cube); 
+    Map(a,a+5,b,Cube); //求立方
     for(int i = 0;i < 5; ++i) 
         cout << b[i] << ","; 
         cout << endl; 
